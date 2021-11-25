@@ -3,7 +3,7 @@ from typing import List
 
 FILE_PATH_IN = '/Users/luizvictorsantos/SyngentaProjects/protector-backup/files/striderlib_2020_03_13_21_15_01.txt'
 FILE_PATH_OUT = '/Users/luizvictorsantos/SyngentaProjects/protector-backup/files/out.txt'
-GET_ELEMENT_PEER_POSITION = {}
+GET_ELEMENT_PEER_POSITION = {4, 8}
 
 
 def open_file_csv(file_name: str) -> List[List[str]]:
@@ -24,7 +24,7 @@ def open_file_csv(file_name: str) -> List[List[str]]:
 
 def write_file_csv(file_name: str, content: List[str]):
     with open(file_name, 'w', newline='') as csvfile:
-        spamwriter = csv.writer(csvfile, delimiter=' ', quotechar=' ', quoting=csv.QUOTE_MINIMAL)
+        spamwriter = csv.writer(csvfile, delimiter=';', quotechar=' ', quoting=csv.QUOTE_MINIMAL)
         for row in content:
             spamwriter.writerow(row)
 
