@@ -37,8 +37,10 @@ def process():
         write_file_csv(file_path.replace('.txt', '_path_size.txt'), content_file)
 
         con, cur = adapter_database.create_connection(file_path.replace('.txt', '_path_size.db'))
-        adapter_database.create_table(cur)
-        adapter_database.insert_items(cur, content_file)
+        archive = archive.replace('.txt', '')
+        archive = archive.replace('-', '')
+        adapter_database.create_table(cur, archive)
+        adapter_database.insert_items(cur, content_file, archive)
         adapter_database.finish_persistence_process(con)
 
 
