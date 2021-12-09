@@ -17,7 +17,8 @@ def create_table(cur: Cursor, table_name: str):
 
 def insert_items(cur: Cursor, values: List[List[str]], table_name: str):
     for value in values:
-        cur.executemany(f"insert into {table_name} values (?,?)", (value,))
+        if value:
+            cur.executemany(f"insert into {table_name} values (?,?)", (value,))
 
 
 def finish_persistence_process(con: Connection):

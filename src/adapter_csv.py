@@ -15,9 +15,10 @@ def open_file_csv(file_name: str) -> List[List[str]]:
             content = content.split(";")
             if config.GET_ELEMENT_PEER_POSITION:
                 for position in config.GET_ELEMENT_PEER_POSITION:
-                    index = config.GET_ELEMENT_PEER_POSITION[0]
+                    index = config.GET_ELEMENT_PEER_POSITION[1]
                     if str_utils.find_regex(row[index], config.HAS_SQL) or str_utils.find_regex(row[index],
                                                                                                 config.REGEX_FARMS_ID):
+                        print(content)
                         if str_utils.find_regex(row[index], config.REGEX_FARMS_ID):
                             str_utils.apply_regex(row[index])
                         content_row.append(content[position])

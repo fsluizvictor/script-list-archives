@@ -4,7 +4,7 @@ import config
 from typing import List
 
 
-def find_regex(text: str, regex: str = config.HAS_SQL) -> bool:
+def find_regex(text: str, regex: str) -> bool:
     return bool(re.search(regex, text))
 
 
