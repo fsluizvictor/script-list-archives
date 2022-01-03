@@ -7,11 +7,16 @@ import adapter_csv
 
 def process():
     start = datetime.now()
-    for archive in config.FILE_NAMES:
-        file_path = config.FILE_PATH_IN + archive
-        print('open archive ', file_path)
-        content_file = adapter_csv.open_file_csv(file_path)
 
+    archives = adapter_csv.list_files_directory()
+
+    archives.remove("/Users/luizvictorsantos/SyngentaProjects/protector-backup/files/originals_2/.DS_Store")
+
+    for archive in archives:
+        print('open archive ', archive)
+        content_file = adapter_csv.open_file_csv(archive)
+
+        archive = archive.replace('/Users/luizvictorsantos/SyngentaProjects/protector-backup/files/originals_2/', '')
         file_path = config.FILE_PATH_OUT_TXT + archive
         print('new archive ', file_path)
         adapter_csv.write_file_csv(file_path.replace('.txt', '_path_size.txt'), content_file)
